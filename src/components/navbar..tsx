@@ -1,9 +1,9 @@
-"use client"; // يجب إضافته في بداية الملف
+"use client"; // Nécessaire pour les composants côté client
 
 // components/Navbar.tsx
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image"; // استخدام Image من Next.js
+import Image from "next/image";
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,31 +19,41 @@ const Navbar: React.FC = () => {
         <div className="flex items-center">
           <Image 
             src="/logo.jpg" 
-            alt="الشعار" 
+            alt="Logo" 
             width={40} 
             height={40} 
             className="mr-2"
           />
-          <span className="text-white text-xl font-bold">تعليمي</span>
+          <span className="text-white text-xl font-bold">Éducatif</span>
         </div>
 
-        {/* Navbar Links (Desktop) */}
+        {/* Liens du menu (Desktop) */}
         <div className="hidden md:flex space-x-6">
           <Link href="/" className="text-white hover:text-blue-200">
-            الرئيسية
+            Accueil
           </Link>
           <Link href="/about" className="text-white hover:text-blue-200">
-            حول المشروع
+            À propos
           </Link>
           <Link href="/games" className="text-white hover:text-blue-200">
-            الألعاب التعليمية
+            Jeux éducatifs
           </Link>
           <Link href="/contact" className="text-white hover:text-blue-200">
-            التواصل
+            Contact
           </Link>
         </div>
 
-        {/* Hamburger Icon (Mobile) */}
+        {/* Liens d'authentification (Desktop) */}
+        <div className="hidden md:flex space-x-4">
+          <Link href="/login" className="text-white border border-white py-1 px-3 rounded hover:bg-white hover:text-blue-500">
+            Connexion
+          </Link>
+          <Link href="/signup" className="text-blue-500 bg-white py-1 px-3 rounded hover:bg-blue-500 hover:text-white">
+            Inscription
+          </Link>
+        </div>
+
+        {/* Icône Hamburger (Mobile) */}
         <div className="md:hidden">
           <button onClick={toggleMobileMenu} className="text-white focus:outline-none">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -53,20 +63,26 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Menu Mobile */}
       {isMobileMenuOpen && (
         <div className="md:hidden mt-2">
           <Link href="/" className="block text-white py-2 px-4 hover:bg-blue-600">
-            الرئيسية
+            Accueil
           </Link>
           <Link href="/about" className="block text-white py-2 px-4 hover:bg-blue-600">
-            حول المشروع
+            À propos
           </Link>
           <Link href="/games" className="block text-white py-2 px-4 hover:bg-blue-600">
-            الألعاب التعليمية
+            Jeux éducatifs
           </Link>
           <Link href="/contact" className="block text-white py-2 px-4 hover:bg-blue-600">
-            التواصل
+            Contact
+          </Link>
+          <Link href="/login" className="block text-white py-2 px-4 hover:bg-blue-600">
+            Connexion
+          </Link>
+          <Link href="/signup" className="block text-blue-500 py-2 px-4 bg-white hover:bg-blue-500 hover:text-white">
+            Inscription
           </Link>
         </div>
       )}
